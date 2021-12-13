@@ -1,8 +1,8 @@
+# https://coinmarketcap.com/api/documentation/v1/
 # Import modules and API key
 import requests
+from requests import Session
 import secrets
-
-# https://coinmarketcap.com/api/documentation/v1/
 
 # Test a request - basic
 url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/map'
@@ -12,9 +12,14 @@ headers = {
 }
 
 r = requests.get(url, headers=headers)
-# You can run 'r.status_code' to see the status code (you should get a 200'
-# After you get a status code 200, run 'r.json()' to get back the data
-# running 'from pprint import pprint as pp' and then pp(r.json()) will make it pretty
-# if you run pp(r.json()['data'][0]) it will give back the first data entry
 
-# Build a class to easily make REST API calls
+
+class CPL:
+    def __init__(self, token):
+        self.apiurl = 'https://pro-api.coinmarketcap.com'
+        self.headers = {'Accepts': 'application/json', 'X-CMC_PRO_API_KEY': token, }
+        self.session = Session()
+        self.session.headers.update(headers=headers)
+
+
+cpull = CPL(secrets.API_KEY)
