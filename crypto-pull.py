@@ -14,6 +14,7 @@ headers = {
 r = requests.get(url, headers=headers)
 # You can run 'r.status_code' to see the status code (you should get a 200'
 # After you get a status code 200, run 'r.json()' to get back the data
-# running 'from pprint import print as pp' and then pp(r.json()) will make it pretty
+# running 'from pprint import pprint as pp' and then pp(r.json()) will make it pretty
+# if you run pp(r.json()['data'][0]) it will give back the first data entry
 
 # Build a class to easily make REST API calls
